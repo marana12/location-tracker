@@ -1,0 +1,12 @@
+@use "../../variables";
+@use "../inputs/input";
+
+.ip-input--text:focus,
+.ip-input--text:focus-visible {
+  box-shadow: 0 0 2px variables.$color-primary;
+  outline: none;
+
+  & ~ .ip-input-btn {
+    box-shadow: 0 0 2px variables.$color-primary;
+  }
+}

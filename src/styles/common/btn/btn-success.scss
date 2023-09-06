@@ -1,0 +1,11 @@
+@use "../../variables";
+@use "./btn";
+
+.ip-btn.ip-btn--success {
+  background-color: variables.$color-green;
+  color: #fff;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}

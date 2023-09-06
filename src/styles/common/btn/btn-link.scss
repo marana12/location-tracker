@@ -1,0 +1,12 @@
+@use "../../variables";
+@use "./btn";
+
+.ip-btn.ip-btn--link {
+  padding: 0;
+  color: variables.$color-primary-light;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}

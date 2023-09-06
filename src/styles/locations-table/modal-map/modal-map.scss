@@ -1,0 +1,19 @@
+@use "../../common/maps/maps.scss";
+@use "../../variables.scss";
+
+.modal-map {
+  display: flex;
+  gap: 5px;
+}
+
+.map-container,
+.map-info {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.map-container .ol-map {
+  min-width: auto;
+  max-height: variables.$modal-max-height;
+  height: variables.$modal-max-height;
+}

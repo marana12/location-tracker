@@ -1,0 +1,42 @@
+@use "../../../variables.scss";
+
+.ip-modal-title {
+  margin: 0;
+}
+
+.ip-modal-header {
+  border-bottom: variables.$modal-line-border;
+}
+
+.ip-modal-header {
+  display: flex;
+
+  .ip-modal-header-title {
+    flex-grow: 1;
+  }
+}
+
+.ip-header-close-btn {
+  height: 10px;
+  opacity: 0.3;
+  position: relative;
+  width: 10px;
+}
+.ip-header-close-btn:hover {
+  opacity: 1;
+}
+.ip-header-close-btn:before,
+.ip-header-close-btn:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 25px;
+  width: 2px;
+  background-color: #333;
+}
+.ip-header-close-btn:before {
+  transform: rotate(45deg);
+}
+.ip-header-close-btn:after {
+  transform: rotate(-45deg);
+}

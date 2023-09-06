@@ -1,0 +1,35 @@
+$width-first-cell: 350px;
+
+.link-info-table {
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 20px;
+  font-size: 15p;
+}
+
+.link-info-table--row {
+  border: 1px solid #ecf0f1;
+  border-top: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &:nth-child(odd) {
+    background-color: #f4f4f4;
+  }
+}
+
+.link-info-table--cell {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  &:first-child {
+    width: $width-first-cell;
+  }
+
+  &:last-child {
+    width: calc(100% - $width-first-cell);
+  }
+}

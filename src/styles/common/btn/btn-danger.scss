@@ -1,0 +1,11 @@
+@use "../../variables";
+@use "./btn";
+
+.ip-btn.ip-btn--danger {
+  background-color: variables.$color-red;
+  color: #fff;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}

@@ -1,0 +1,11 @@
+@use "../../../variables.scss";
+@use "../../btn/btn-secondary.scss";
+@use "../../btn/btn-primary.scss";
+
+.ip-modal-footer {
+  display: flex;
+  gap: 5px;
+  flex-direction: row;
+  justify-content: flex-end;
+  border-top: variables.$modal-line-border;
+}

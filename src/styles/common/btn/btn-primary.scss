@@ -1,0 +1,12 @@
+@use "../../variables";
+@use "./btn";
+
+.ip-btn.ip-btn--primary {
+  background-color: variables.$color-primary;
+  color: variables.$color-secondary;
+  border: 1px solid variables.$color-primary;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
