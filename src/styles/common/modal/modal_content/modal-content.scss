@@ -3,18 +3,30 @@
 @use "./modal-footer.scss";
 @use "../../../variables.scss";
 
-$padding: 10px;
-
 .ip-modal-content {
   transform: translateY(0);
   max-width: 100%;
   background-color: #fff;
   transition: all 0.3s ease-in-out;
   width: 900px;
+  min-height: variables.$modal-min-height;
+  width: calc(100% - 30px);
 }
 
 .ip-modal-header,
 .ip-modal-body,
 .ip-modal-footer {
-  padding: $padding;
+  padding: variables.$modal-padding;
+}
+
+@include variables.media-query-md {
+  .ip-modal-content {
+    width: calc(100% - 100px);
+  }
+}
+
+@include variables.media-query-xl {
+  .ip-modal-content {
+    width: calc(100% / 2);
+  }
 }

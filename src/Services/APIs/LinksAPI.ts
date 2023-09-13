@@ -9,11 +9,15 @@ export async function CreateShortUrl(originalUrl: string): Promise<AxiosResponse
 
 export async function GetOriginalUrl(hashedUrl: string | undefined, lat: number | undefined, lon: number | undefined): Promise<Link | undefined> {
 
-  const response = await HTTP.post<Link>(`/api/links?hashedUrl=${hashedUrl}&lat=${lat}&lon=${lon}`);
+  const cordinate = lat && lon ? `&lat=${lat}&lon=${lon}` : "";
+
+  const response = await HTTP.post<Link>(`/api/links?hashedUrl=${hashedUrl}${cordinate}`);
 
   return response.data;
 }
 
-export async function GetShortUrlDetails(hashedUrl: string | undefined): Promise<AxiosResponse<ShortUrlModel>> {
-  return await HTTP.get<ShortUrlModel>(`/api/links/shorturl?hashedUrl=${hashedUrl}`);
+export async function GetShortUrlDetails(hashedUrl: string | undefined | null): Promise<AxiosResponse<ShortUrlModel>> {
+  const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+  return await HTTP.get<ShortUrlModel>(`/api/links/shorturl?hashedUrl=${hashedUrl}&clientTimeZone=${clientTimeZone}`);
 }

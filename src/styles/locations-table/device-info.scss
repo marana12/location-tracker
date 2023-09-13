@@ -1,0 +1,24 @@
+.device-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.device-info__browser,
+.device-info__platform {
+  gap: 10px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.browser-img,
+.platform-img {
+  width: 20px;
+  height: 20px;
+}
+
+.browser-name,
+.platform-name {
+  color: #3f3f3f;
+  font-size: 12px;
+}

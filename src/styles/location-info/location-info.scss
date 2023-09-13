@@ -1,16 +1,22 @@
-$width-first-cell: 350px;
+@use "../variables.scss";
+
+$width-first-cell-md: 140px;
+$width-first-cell-sm: 100px;
 
 .link-info-table {
   width: 100%;
   background-color: #fff;
   margin-bottom: 20px;
-  font-size: 15p;
+  font-size: 15px;
+  box-shadow: 0 0 1px #ecf0f1;
+  border-radius: 2px;
 }
 
 .link-info-table--row {
   border: 1px solid #ecf0f1;
   border-top: none;
-  display: flex;
+  display: grid;
+  grid-template-columns: $width-first-cell-sm 1fr;
   align-items: center;
   justify-content: space-between;
   &:nth-child(odd) {
@@ -24,12 +30,30 @@ $width-first-cell: 350px;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+}
 
-  &:first-child {
-    width: $width-first-cell;
+.link-info-table--cell-title {
+  font-weight: 600;
+}
+
+.link-info-table--button {
+  display: flex;
+  margin-bottom: 10px;
+  flex-grow: 1;
+  align-items: center;
+
+  & .ip-btn {
+    flex-grow: 1;
+    text-align: center;
+  }
+}
+
+@include variables.media-query-md {
+  .link-info-table--row {
+    grid-template-columns: $width-first-cell-md 1fr;
   }
 
-  &:last-child {
-    width: calc(100% - $width-first-cell);
+  .link-info-table--button .ip-btn {
+    flex-grow: 0;
   }
 }

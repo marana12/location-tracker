@@ -14,6 +14,7 @@ export default function ModalMap({ lonNum, latNum }: ModalMapProps) {
           zoom={15}
         />
       </div>
+
       <div className="map-info">
         <p>Latitude: {latNum}</p>
         <p>Longitude: {lonNum}</p>

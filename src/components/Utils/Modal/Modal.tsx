@@ -3,37 +3,36 @@ import "../../../styles/common/modal/modal.scss";
 
 interface ModalProps {
   show: boolean;
+  onClose: () => void;
   children: React.ReactNode;
 }
 
-export default function Modal({ show, children }: ModalProps) {
-  const [isShow, setIsShow] = useState(false);
+export default function Modal({ show, onClose, children }: ModalProps) {
+  const [isShow, setIsShow] = useState(show);
 
-  const closeOnEscapeKeyDown = useCallback(
-    (e: KeyboardEvent) => {
-      if ((e.charCode || e.keyCode) === 27) {
-        setIsShow(false);
-      }
-    },
-    [show]
-  );
+  const closeOnEscapeKeyDown = (e: KeyboardEvent) => {
+    if ((e.charCode || e.keyCode) === 27) {
+      onClose();
+    }
+  };
 
-  const onClose = useCallback(() => {
-    setIsShow(false);
+  useEffect(() => {
+    setIsShow(show);
   }, [show]);
 
   useEffect(() => {
-    document.body.style.overflow = "hidden";
+    if (show) {
+      document.body.style.overflow = "hidden";
+    }
 
     document.body.addEventListener("keydown", closeOnEscapeKeyDown);
-    setIsShow(show);
 
     return () => {
       document.body.style.overflow = "auto";
 
       document.body.removeEventListener("keydown", closeOnEscapeKeyDown);
     };
-  }, [closeOnEscapeKeyDown, show]);
+  }, [show]);
 
   return (
     <div className={`ip-modal ${isShow ? "show" : ""}`} onClick={onClose}>

@@ -1,3 +1,19 @@
 @use "../common/btn/btn-link.scss";
 @use "../common/modal/modal.scss";
 @use "./modal-map/modal-map.scss";
+
+.location-date-time {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.location-date-time__date {
+  color: #535455;
+  font-size: 14px;
+}
+
+.location-date-time__time {
+  font-size: 12px;
+  color: #aba4a4;
+}

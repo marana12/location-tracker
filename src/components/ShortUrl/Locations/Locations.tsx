@@ -9,10 +9,13 @@ import ModalBody from "../../Utils/Modal/ModalContent/ModalBody";
 import Location from "../../../models/location";
 import ModalMap from "./ModalMap/ModalMap";
 import { GetShortUrlDetails } from "../../../Services/APIs/LinksAPI";
+import DeviceInfo from "./DeviceInfo";
+import LocationDateTime from "./LocationDateTime";
+import LocationModal from "./LocationModal";
 
 interface LocationsProps {
   locations?: Location[];
-  hashUrl?: string;
+  hashUrl?: string | undefined | null;
 }
 
 export default function Locations({ locations, hashUrl }: LocationsProps) {
@@ -24,15 +27,16 @@ export default function Locations({ locations, hashUrl }: LocationsProps) {
   const [lonNum, setLonNum] = useState(0);
 
   useEffect(() => {
+    setNewLocations(locations);
+  }, []);
+
+  useEffect(() => {
     if (!connection) {
       const signalr = new SignalRService("/iptrackersignalr");
       signalr.createConncetion();
       setConnection(signalr.connection);
     }
-    setNewLocations(locations);
-  }, []);
 
-  useEffect(() => {
     return () => {
       if (connection) {
         connection.stop();
@@ -72,12 +76,13 @@ export default function Locations({ locations, hashUrl }: LocationsProps) {
   };
 
   return (
-    <>
-      <table className="table table-hover">
+    <div className="table-responsive">
+      <table className="location-table table table-hover align-middle">
         <thead>
           <tr>
             <th>DateTime</th>
             <th>IP Address</th>
+            <th>Decive Info</th>
             <th>Location Info</th>
           </tr>
         </thead>
@@ -85,9 +90,18 @@ export default function Locations({ locations, hashUrl }: LocationsProps) {
           {newLocations?.map((location: Location) => {
             return (
               <tr key={location.id}>
-                <td>{location.dateTime}</td>
-                <td>{location.ipAddress}</td>
                 <td>
+                  <LocationDateTime dateTime={location.dateTime} />
+                </td>
+                <td style={{ minWidth: "130px" }}>{location.ipAddress}</td>
+                <td style={{ minWidth: "105px" }}>
+                  <DeviceInfo
+                    browser={location.browser}
+                    platform={location.platform}
+                  />
+                </td>
+
+                <td style={{ minWidth: "120px" }}>
                   <button
                     className="ip-btn ip-btn--link"
                     onClick={() => onSetShowModal(location)}
@@ -101,14 +115,12 @@ export default function Locations({ locations, hashUrl }: LocationsProps) {
         </tbody>
       </table>
 
-      <Modal show={showModal}>
-        <ModalConntent>
-          <ModalHeader title={"Extended"} onClose={() => setShowModal(false)} />
-          <ModalBody>
-            {showModal && <ModalMap latNum={latNum} lonNum={lonNum} />}
-          </ModalBody>
-        </ModalConntent>
-      </Modal>
-    </>
+      <LocationModal
+        handleShowModal={() => setShowModal(false)}
+        showModal={showModal}
+        latNum={latNum}
+        lonNum={lonNum}
+      />
+    </div>
   );
 }

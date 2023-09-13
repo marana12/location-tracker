@@ -1,5 +1,7 @@
 @use "../../../variables.scss";
 
+$close-button-size: 25px;
+
 .ip-modal-title {
   margin: 0;
 }
@@ -10,6 +12,7 @@
 
 .ip-modal-header {
   display: flex;
+  align-items: center;
 
   .ip-modal-header-title {
     flex-grow: 1;
@@ -17,10 +20,10 @@
 }
 
 .ip-header-close-btn {
-  height: 10px;
+  height: $close-button-size;
   opacity: 0.3;
   position: relative;
-  width: 10px;
+  width: $close-button-size;
 }
 .ip-header-close-btn:hover {
   opacity: 1;
@@ -28,15 +31,18 @@
 .ip-header-close-btn:before,
 .ip-header-close-btn:after {
   position: absolute;
+  top: 0;
   left: 15px;
   content: " ";
-  height: 25px;
+  height: $close-button-size;
   width: 2px;
   background-color: #333;
 }
+
 .ip-header-close-btn:before {
   transform: rotate(45deg);
 }
+
 .ip-header-close-btn:after {
   transform: rotate(-45deg);
 }

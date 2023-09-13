@@ -5,7 +5,7 @@
   background-color: variables.$color-primary;
   color: variables.$color-secondary;
   border: 1px solid variables.$color-primary;
-
+  text-decoration: none;
   &:hover {
     opacity: 0.9;
   }

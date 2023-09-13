@@ -1,5 +1,7 @@
 @use "../../../variables.scss";
 
-.ip-modal-body {
-  max-height: variables.$modal-max-height;
+@include variables.media-query-md {
+  .ip-modal-body {
+    min-height: variables.$modal-min-height;
+  }
 }

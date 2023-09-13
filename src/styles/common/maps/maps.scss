@@ -1,7 +1,8 @@
+@use "../../variables.scss";
+
 .ol-map {
-  min-width: 600px;
-  min-height: 500px;
-  height: 500px;
+  min-width: variables.$ol-map-min-width;
+  min-height: variables.$ol-map-min-height;
   width: 100%;
 }
 

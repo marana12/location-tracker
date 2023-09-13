@@ -4,16 +4,29 @@
 .modal-map {
   display: flex;
   gap: 5px;
+  flex-direction: column;
 }
 
 .map-container,
 .map-info {
-  flex: 0 0 50%;
-  max-width: 50%;
+  flex: 0 0 100%;
+  max-width: 100%;
 }
 
 .map-container .ol-map {
   min-width: auto;
-  max-height: variables.$modal-max-height;
-  height: variables.$modal-max-height;
+  height: variables.$modal-map-height;
+  box-shadow: 0 0 3px #ccc;
+}
+
+@include variables.media-query-md {
+  .modal-map {
+    flex-direction: row;
+  }
+
+  .map-container,
+  .map-info {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
 }

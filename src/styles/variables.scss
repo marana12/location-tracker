@@ -8,8 +8,19 @@ $color-red-light: #ffbaba;
 $color-green: #00610e;
 $color-green-light: #6ec007;
 
+$screen-size-sm: 576px;
+$screen-size-md: 768px;
+$screen-size-lg: 992px;
+$screen-size-xl: 1200px;
+
+$ol-map-min-width: 600px;
+$ol-map-min-height: 200px;
+
 $modal-line-border: 1px solid #eee;
-$modal-max-height: 500px;
+$modal-padding: 10px;
+$modal-min-height: 300px;
+
+$modal-map-height: $modal-min-height - ($modal-padding * 2);
 
 $ip-input-padding-y: 1rem;
 $ip-input-padding-x: 0.5rem;
@@ -20,3 +31,27 @@ $ip-input-border-radius: 6px 0 0 6px;
 $ip-input-color: #000;
 $ip-input-button-border-radius: 0 6px 6px 0;
 $ip-input-button-min-height: $ip-input-min-height;
+
+@mixin media-query-sm {
+  @media only screen and (min-width: $screen-size-sm) {
+    @content;
+  }
+}
+
+@mixin media-query-md {
+  @media only screen and (min-width: $screen-size-md) {
+    @content;
+  }
+}
+
+@mixin media-query-lg {
+  @media only screen and (min-width: $screen-size-lg) {
+    @content;
+  }
+}
+
+@mixin media-query-xl {
+  @media only screen and (min-width: $screen-size-xl) {
+    @content;
+  }
+}
