@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { getLocation } from "../../Utils/Navigator";
-import { GetOriginalUrl } from "../../Services/APIs/LinksAPI";
-import LoaderRipple from "../Utils/Loaders/LoaderRipple";
+import { getLocation } from "../Utils/Navigator";
+import { GetOriginalUrl } from "../Services/APIs/LinksAPI";
+import LoaderRipple from "./Utils/Loaders/LoaderRipple";
 import { useParams } from "react-router-dom";
-import "../../styles/home/home.scss";
+import "../styles/redirectPage.scss";
 
-export default function Home() {
+export default function RedirectPage() {
   const params = useParams();
   const hashUrl = params.hashUrl;
 
