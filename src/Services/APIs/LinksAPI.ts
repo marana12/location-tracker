@@ -17,7 +17,5 @@ export async function GetOriginalUrl(hashedUrl: string | undefined, lat: number 
 }
 
 export async function GetShortUrlDetails(hashedUrl: string | undefined | null): Promise<AxiosResponse<ShortUrlModel>> {
-  const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-  return await HTTP.get<ShortUrlModel>(`/api/links/shorturl?hashedUrl=${hashedUrl}&clientTimeZone=${clientTimeZone}`);
+  return await HTTP.get<ShortUrlModel>(`/api/links/shorturl?hashedUrl=${hashedUrl}`);
 }
