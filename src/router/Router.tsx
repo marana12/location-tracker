@@ -1,9 +1,10 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import RedirectPage from "../components/RedirectPage";
 import Home from "../components/Home";
 import ShortUrl from "../components/ShortUrl/ShortUrl";
 import Admin from "../components/Admin";
 import LinkForm from "../components/ShortUrl/LinkForm";
+import NotFound from "../components/NotFound";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -16,6 +17,8 @@ const router = createBrowserRouter([
       { path: "short-url/", element: <LinkForm /> },
     ],
   },
+  { path: "/404", element: <NotFound /> },
+  { path: "*", element: <Navigate to={"/404"} /> },
 ]);
 
 export default router;
