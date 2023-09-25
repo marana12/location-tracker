@@ -2,27 +2,31 @@ import { useState, useEffect } from "react";
 import { getLocation } from "../Utils/Navigator";
 import { AddVisitor, GetUrl } from "../Services/APIs/LinksAPI";
 import LoaderRipple from "./Utils/Loaders/LoaderRipple";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "../styles/redirectPage.scss";
-import { set } from "ol/transform";
 
 export default function RedirectPage() {
   const params = useParams();
   const hashUrl = params.hashUrl;
+  const navigate = useNavigate();
 
   const [latitude, setLatitude] = useState<number>();
   const [longitude, setLongitude] = useState<number>();
   const [isBusy, setBusy] = useState<boolean>(true);
   const [originalUrl, setOriginalUrl] = useState<string>();
+  const [haveLocation, setHaveLocation] = useState<boolean>(false);
 
   useEffect(() => {
     const getUrl = async () => {
-      const response = await GetUrl(hashUrl);
-      console.log(response);
-      if (response.data) {
-        const { originalUrl } = response.data;
+      try {
+        const response = await GetUrl(hashUrl);
+        if (response.data) {
+          const { originalUrl } = response.data;
 
-        setOriginalUrl(originalUrl);
+          setOriginalUrl(originalUrl);
+        }
+      } catch (error) {
+        navigate("404");
       }
     };
 
@@ -44,6 +48,12 @@ export default function RedirectPage() {
       }
     }
 
+    getGeoLocation().then(() => {
+      setHaveLocation(true);
+    });
+  }, [originalUrl != null]);
+
+  useEffect(() => {
     async function addNewVisitor() {
       if (originalUrl != undefined) {
         AddVisitor(hashUrl, latitude, longitude)
@@ -57,12 +67,8 @@ export default function RedirectPage() {
       }
     }
 
-    getGeoLocation().then(() => {
-      console.log("Test");
-      addNewVisitor();
-    });
-  }, [originalUrl != null]);
-
+    addNewVisitor();
+  }, [haveLocation == true]);
   return (
     <>
       <div className="home-container">{isBusy && <LoaderRipple />}</div>
