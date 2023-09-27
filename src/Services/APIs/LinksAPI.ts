@@ -7,19 +7,14 @@ export async function CreateShortUrl(originalUrl: string): Promise<AxiosResponse
   return await HTTP.post<Link>("/api/links/create?originalUrl=" + originalUrl);
 }
 
-export async function AddVisitor(hashedUrl: string | undefined, lat: number | undefined, lon: number | undefined): Promise<Link | undefined> {
-
+export async function AddVisitor(hashedUrl: string | undefined, lat: number | undefined, lon: number | undefined): Promise<AxiosResponse<Link>> {
   const params = {
     hashedUrl: hashedUrl,
     lat: lat?.toString(),
     lon: lon?.toString(),
   }
 
-  const cordinate = lat && lon ? `&lat=${lat}&lon=${lon}` : "";
-
-  const response = await HTTP.post<Link>(`/api/links/visitor`, params);
-
-  return response.data;
+  return await HTTP.post<Link>(`/api/links/visitor`, params);
 }
 
 export async function GetShortUrlDetails(hashedUrl: string | undefined | null): Promise<AxiosResponse<ShortUrlModel>> {
@@ -28,5 +23,4 @@ export async function GetShortUrlDetails(hashedUrl: string | undefined | null): 
 
 export async function GetUrl(hashedUrl: string | undefined): Promise<AxiosResponse<Link>> {
   return await HTTP.get<Link>(`/api/links/originalurl?hashedUrl=${hashedUrl}`);
-
 }

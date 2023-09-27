@@ -1,13 +1,7 @@
-import { getLocationsByHash } from "../../../Services/ShortUrlService";
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import SignalRService from "../../../Services/SignalR/SignalRService";
-import Modal from "../../Utils/Modal/Modal";
 import { tryParseFloat } from "../../../Utils/Parse";
-import ModalConntent from "../../Utils/Modal/ModalContent/ModalContent";
-import ModalHeader from "../../Utils/Modal/ModalContent/ModalHeader";
-import ModalBody from "../../Utils/Modal/ModalContent/ModalBody";
 import Location from "../../../models/location";
-import ModalMap from "./ModalMap/ModalMap";
 import { GetShortUrlDetails } from "../../../Services/APIs/LinksAPI";
 import DeviceInfo from "./DeviceInfo";
 import LocationDateTime from "./LocationDateTime";

@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect, RefObject } from "react";
 import MapContext from "./MapContext";
-//import * as ol from "ol";
 import { View, Map as MapType } from "ol";
 
 interface MapProps {
