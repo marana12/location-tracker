@@ -31,7 +31,7 @@ export default function RedirectPage() {
     };
 
     getUrl();
-  }, [hashUrl]);
+  }, [originalUrl == undefined]);
 
   useEffect(() => {
     async function getGeoLocation() {
@@ -45,15 +45,11 @@ export default function RedirectPage() {
         }
       } catch (error) {
         console.error(error);
+      } finally {
+        setHaveLocation(true);
       }
     }
 
-    getGeoLocation().then(() => {
-      setHaveLocation(true);
-    });
-  }, [originalUrl != null]);
-
-  useEffect(() => {
     async function addNewVisitor() {
       if (originalUrl != undefined) {
         AddVisitor(hashUrl, latitude, longitude)
@@ -61,14 +57,18 @@ export default function RedirectPage() {
           .catch((err) => console.log(err))
           .finally(() => {
             window.location.replace(originalUrl);
-
             setBusy(false);
           });
       }
     }
 
-    addNewVisitor();
-  }, [haveLocation == true]);
+    if (haveLocation) {
+      addNewVisitor();
+    } else {
+      getGeoLocation();
+    }
+  }, [originalUrl, haveLocation]);
+
   return (
     <>
       <div className="home-container">{isBusy && <LoaderRipple />}</div>
