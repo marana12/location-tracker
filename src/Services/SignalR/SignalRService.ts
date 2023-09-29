@@ -29,7 +29,7 @@ export default class SignalRService {
 
   start = () => {
     if (this.connection === null || this.connectionBuilder === null) {
-      console.log("No se puede iniciar la conexión");
+      console.log("The connection can't start");
       return;
     }
     this.connection
@@ -44,7 +44,7 @@ export default class SignalRService {
 
   stop = () => {
     if (this.connection === null) {
-      console.log("No se puede cerrar la conexión");
+      console.error("The connection can't close");
       return;
     }
     this.connection.stop();
