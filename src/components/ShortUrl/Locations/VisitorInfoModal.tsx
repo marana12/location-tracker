@@ -3,28 +3,28 @@ import ModalHeader from "../../Utils/Modal/ModalContent/ModalHeader";
 import ModalBody from "../../Utils/Modal/ModalContent/ModalBody";
 import ModalMap from "./ModalMap/ModalMap";
 import Modal from "../../Utils/Modal/Modal";
-interface LocationModalProps {
+import { VisitorLocation } from "../../../models/visitorInfo";
+
+interface VisitorInfoModalProps {
   showModal: boolean;
+  visitorLocation: VisitorLocation | undefined;
   handleShowModal: () => void;
-  latNum: number;
-  lonNum: number;
 }
-function LocationModal({
+function VisitorInfoModal({
   showModal,
   handleShowModal,
-  latNum,
-  lonNum,
-}: LocationModalProps) {
+  visitorLocation,
+}: VisitorInfoModalProps) {
   return (
     <Modal show={showModal} onClose={handleShowModal}>
       <ModalConntent>
         <ModalHeader title={"Extended"} onClose={handleShowModal} />
         <ModalBody>
-          {showModal && <ModalMap latNum={latNum} lonNum={lonNum} />}
+          {showModal && <ModalMap location={visitorLocation} />}
         </ModalBody>
       </ModalConntent>
     </Modal>
   );
 }
 
-export default LocationModal;
+export default VisitorInfoModal;

@@ -1,4 +1,4 @@
-import { Browser, Platform } from "../../../models/location";
+import { Browser, Platform } from "../../../models/visitorInfo";
 import "../../../styles/locations-table/device-info.scss";
 
 interface DeviceInfoProps {

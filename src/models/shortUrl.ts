@@ -1,8 +1,8 @@
 
 import Link from "./link";
-import Location from "./location";
+import VisitorInfo from "./visitorInfo";
 
 export default interface ShortUrlModel {
     link: Link;
-    locations: Location[];
+    visitors: VisitorInfo[];
 }

@@ -1,10 +1,14 @@
+import { VisitorLocation } from "../../../../models/visitorInfo";
 import OLMap from "../../../Utils/Maps/OLMap";
+import { tryParseFloat } from "../../../../Utils/Parse";
 
 interface ModalMapProps {
-  lonNum: number;
-  latNum: number;
+  location: VisitorLocation | undefined;
 }
-export default function ModalMap({ lonNum, latNum }: ModalMapProps) {
+export default function ModalMap({ location }: ModalMapProps) {
+  const latNum = tryParseFloat(location?.lat, 0);
+  const lonNum = tryParseFloat(location?.lon, 0);
+
   return (
     <div className="modal-map">
       <div className="map-container">

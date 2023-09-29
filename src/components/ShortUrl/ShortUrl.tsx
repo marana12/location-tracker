@@ -1,5 +1,5 @@
 import { useParams, Link as RouterLink } from "react-router-dom";
-import Locations from "./Locations/Locations";
+import VisitorTable from "./Locations/VisitorTable";
 import { useEffect, useState } from "react";
 import ShortUrlModel from "../../models/shortUrl";
 import { GetShortUrlDetails } from "../../Services/APIs/LinksAPI";
@@ -43,9 +43,9 @@ export default function ShortUrl() {
         </>
       )}
 
-      {shortUrlModel?.locations && (
+      {shortUrlModel?.visitors && (
         <div className="locations-card">
-          <Locations hashUrl={hashUrl} locations={shortUrlModel?.locations} />
+          <VisitorTable hashUrl={hashUrl} visitors={shortUrlModel?.visitors} />
         </div>
       )}
     </>
