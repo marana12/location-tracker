@@ -16,13 +16,10 @@ export default function VisitorTable({ visitors, hashUrl }: VisitorTableProps) {
   const [connection, setConnection] = useState<any>();
   const [newLocations, setNewLocations] = useState<VisitorInfo[] | undefined>();
   const [showModal, setShowModal] = useState(false);
-  const [latNum, setLatNum] = useState(0);
-  const [lonNum, setLonNum] = useState(0);
   const [visitorLocation, setVisitorLocation] = useState<VisitorLocation>();
 
   useEffect(() => {
     setNewLocations(visitors);
-    console.log(visitors);
   }, []);
 
   useEffect(() => {
