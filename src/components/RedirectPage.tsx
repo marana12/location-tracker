@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getLocation } from "../Utils/Navigator";
-import { AddVisitor, GetUrl } from "../Services/APIs/LinksAPI";
+import { GetUrl } from "../Services/APIs/LinksAPI";
+import { AddVisitor } from "../Services/APIs/VisitorApi";
 import LoaderRipple from "./Utils/Loaders/LoaderRipple";
 import { useParams, useNavigate } from "react-router-dom";
 import "../styles/redirectPage.scss";
