@@ -22,6 +22,16 @@ export default function ModalMap({ location }: ModalMapProps) {
       <div className="map-info">
         <p>Latitude: {latNum}</p>
         <p>Longitude: {lonNum}</p>
+        {location?.city && <p>City: {location?.city}</p>}
+        {location?.country && (
+          <p>
+            Contry: {location?.country}
+            {location?.countryFlag && (
+              <img src={location?.countryFlag} alt={location?.country} />
+            )}
+          </p>
+        )}
+        {location?.city && <p>City: {location?.city}</p>}
       </div>
     </div>
   );
