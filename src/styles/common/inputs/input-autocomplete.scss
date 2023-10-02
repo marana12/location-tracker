@@ -1,0 +1,33 @@
+.ip-input-autocomplete {
+  display: flex;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin: 0 auto;
+  align-items: stretch;
+}
+
+.ip-input-autocomplete__dropdown {
+  margin: 0;
+  padding: 5px;
+  overflow: auto;
+  width: 100%;
+  max-height: 500px;
+  box-shadow: 0 0 4px #6d6d6d52;
+}
+
+.ip-input-autocomplete__dropdown li {
+  display: block;
+  padding: 5px 0;
+}
+.ip-input-autocomplete__dropdown li button {
+  text-align: start;
+  width: 100%;
+  text-overflow: ellipsis; /* enables ellipsis */
+  white-space: nowrap; /* keeps the text in a single line */
+  overflow: hidden;
+}
+
+.ip-input-autocomplete__dropdown li:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+}

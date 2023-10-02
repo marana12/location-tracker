@@ -3,7 +3,7 @@ import RedirectPage from "../components/RedirectPage";
 import Home from "../components/Home";
 import ShortUrl from "../components/ShortUrl/ShortUrl";
 import Admin from "../components/Admin";
-import LinkForm from "../components/ShortUrl/LinkForm";
+import SearchLink from "../components/ShortUrl/SearchLink";
 import NotFound from "../components/NotFound";
 
 const router = createBrowserRouter([
@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     element: <Admin />,
     children: [
       { path: "short-url/:hashUrl", element: <ShortUrl /> },
-      { path: "short-url/", element: <LinkForm /> },
+      { path: "short-url/", element: <SearchLink /> },
     ],
   },
   { path: "/404", element: <NotFound /> },

@@ -6,3 +6,12 @@ export default interface Link {
     createDate: string
     modifiedDate: string
 }
+
+export interface SearchLinkResult {
+    id: number,
+    hashUrl: string,
+    highlightedText: string,
+    originalUrl: string,
+    searchTerm: string,
+    shortUrl: string
+}

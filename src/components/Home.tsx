@@ -1,9 +1,9 @@
-import LinkForm from "./ShortUrl/LinkForm";
+import SearchLink from "./ShortUrl/SearchLink";
 
 const Home = () => {
   return (
     <div>
-      <LinkForm />
+      <SearchLink />
     </div>
   );
 };
